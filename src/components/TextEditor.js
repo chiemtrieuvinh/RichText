@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Editor } from 'slate-react'
-import { Value } from 'slate'
 import Icon from "react-icons-kit"
 import {bold} from "react-icons-kit/feather/bold"
 import {italic} from "react-icons-kit/feather/italic"
@@ -38,7 +37,7 @@ function MarkHotkey(options) {
    return {
     onKeyDown(event, editor, next) {
       // If it doesn't match our `key`, let other plugins handle it.
-      if (!event.ctrlKey || event.key != key) return next()
+      if (!event.ctrlKey || event.key !== key) return next()
       // Prevent the default characters from being inserted.
       event.preventDefault()
       // Toggle the mark `type`.
@@ -79,27 +78,37 @@ class TextEditor extends Component {
         <div className="App">
         <FormatToolBar>
             <button 
-            onPointerDown={(e)=>this.onMarkClick(e,'bold')}
+            onMouseDown={(e)=>{
+              e.preventDefault();
+              this.onMarkClick(e,'bold')}}
             className="tooltip-icon-button">
                 <Icon icon={bold}/>
             </button>
             <button 
-             onPointerDown={(e)=>this.onMarkClick(e,'italic')}
+             onMouseDown={(e)=>{
+              e.preventDefault() ;
+              this.onMarkClick(e,'italic')}}
             className="tooltip-icon-button">
                 <Icon icon={italic}/>
             </button>
             <button 
-                onPointerDown={(e)=>this.onMarkClick(e,'strikethrough')}
+                onMouseDown={(e)=>{
+                  e.preventDefault() ;
+                  this.onMarkClick(e,'strikethrough')}}
             className="tooltip-icon-button">
                 <Icon icon={x}/>
             </button>
              <button
-                 onPointerDown={(e)=>this.onMarkClick(e,'underline')}
+                 onMouseDown={(e)=>{
+                  e.preventDefault() ;
+                  this.onMarkClick(e,'underline')}}
              className="tooltip-icon-button">
                 <Icon icon={underline}/>
             </button>
             <button 
-                onPointerDown={(e)=>this.onMarkClick(e,'code')}
+                onPointerDown={(e)=>{
+                  e.preventDefault() ;
+                  this.onMarkClick(e,'code')}}
             className="tooltip-icon-button">
                 <Icon icon={code}/>
             </button>

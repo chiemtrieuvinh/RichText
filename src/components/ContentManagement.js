@@ -14,18 +14,18 @@ export default class ContentManagement extends Component {
           <h6>Image</h6>
           <input type="file" name="image" onChange={this.props.handleImageChange} className="form-control" placeholder="" aria-describedby="helpId"/>
           <hr/>
-          <div class="card-deck">
-            <div class="card">
-              <img class="card-img-top" src={this.props.image}/>
-              <div class="card-body">
-                <h5 class="card-title">Selected Image</h5>
+          <div className="card-deck">
+            <div className="card">
+              <img className="card-img-top" src={this.props.image}/>
+              <div className="card-body">
+                <h5 className="card-title">Selected Image</h5>
               </div>
             </div>
           </div>
           <hr/>
           <h6>Content</h6>
           <TextEditor value={this.props.value} onChange={this.props.onChange}/>
-          <button class="btn btn-primary float-right">Save</button>
+          <button className="btn btn-primary float-right">Save</button>
         </div>
         </form>
       </div>
