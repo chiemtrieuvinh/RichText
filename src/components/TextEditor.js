@@ -7,29 +7,6 @@ import {x} from "react-icons-kit/feather/x"
 import {code} from "react-icons-kit/feather/code"
 import {underline} from "react-icons-kit/feather/underline"
 import FormatToolBar from './FormatToolBar';
-// const existingValue = JSON.parse(localStorage.getItem('content'))
-//   const initialValue = Value.fromJSON(
-//   existingValue || {
-//     document: {
-//       nodes: [
-//         {
-//           object: 'block',
-//           type: 'paragraph',
-//           nodes: [
-//             {
-//               object: 'text',
-//               leaves: [
-//                 {
-//                   text: 'A line of text in a paragraph.',
-//                 },
-//               ],
-//             },
-//           ],
-//         },
-//       ],
-//     },
-//   }
-// )
 function MarkHotkey(options) {
   // Grab our options from the ones passed in.
   const { type, key } = options
@@ -55,18 +32,6 @@ const plugins = [
 ]
 
 class TextEditor extends Component { 
-  //  state={
-  //     value: initialValue
-  //   }
-    // On change, update the app's React state with the new editor value.
-    // onChange = ({value}) => {
-    //  // Check to see if the document has changed before saving.
-    // if (value.document != this.state.value.document) {
-    //   const content = JSON.stringify(value.toJSON())
-    //   localStorage.setItem('content', content)
-    // }
-    //   this.setState({ value: this.state.value })
-    // }
     onMarkClick = (e, type) => {
       e.preventDefault();
       this.editor.change(change => {
@@ -78,35 +43,35 @@ class TextEditor extends Component {
         <div className="App">
         <FormatToolBar>
             <button 
-            onMouseDown={(e)=>{
+            onClick={(e)=>{
               e.preventDefault();
               this.onMarkClick(e,'bold')}}
             className="tooltip-icon-button">
                 <Icon icon={bold}/>
             </button>
             <button 
-             onMouseDown={(e)=>{
+             onClick={(e)=>{
               e.preventDefault() ;
               this.onMarkClick(e,'italic')}}
             className="tooltip-icon-button">
                 <Icon icon={italic}/>
             </button>
             <button 
-                onMouseDown={(e)=>{
+                onClick={(e)=>{
                   e.preventDefault() ;
                   this.onMarkClick(e,'strikethrough')}}
             className="tooltip-icon-button">
                 <Icon icon={x}/>
             </button>
              <button
-                 onMouseDown={(e)=>{
+                 onClick={(e)=>{
                   e.preventDefault() ;
                   this.onMarkClick(e,'underline')}}
              className="tooltip-icon-button">
                 <Icon icon={underline}/>
             </button>
             <button 
-                onPointerDown={(e)=>{
+                onClick={(e)=>{
                   e.preventDefault() ;
                   this.onMarkClick(e,'code')}}
             className="tooltip-icon-button">
@@ -126,12 +91,10 @@ class TextEditor extends Component {
     )
   }
 
-  // Add a `renderMark` method to render marks.
   renderMark = (props, editor, next) => {
     switch (props.mark.type) {
       case 'bold':
         return <strong>{props.children}</strong>
-      // Add our new mark renderers...
       case 'code':
         return <code>{props.children}</code>
       case 'italic':
