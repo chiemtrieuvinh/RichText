@@ -16,7 +16,7 @@ export default class ContentManagement extends Component {
           <hr/>
           <div className="card-deck">
             <div className="card">
-              <img className="card-img-top" src={this.props.image}/>
+              <img className="card-img-top2" src={this.props.image}/>
               <div className="card-body">
                 <h5 className="card-title">Selected Image</h5>
               </div>
@@ -32,4 +32,3 @@ export default class ContentManagement extends Component {
     )
   }
 }
-// https://codepen.io/hartzis/pen/VvNGZP
